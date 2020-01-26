@@ -42,7 +42,13 @@ class Flue{ //hvor fluen bliver placeret hvis man trykker på en knap
   }
   
   void flyt(){ //rykker fluerne og bestemmer deres hastighed
+    if ((sin(vinkel)*distanceFlyttet+positionY)<0) distanceFlyttet*=-1;
+    if ((cos(vinkel)*distanceFlyttet+positionX)<0) distanceFlyttet*=-1;
     distanceFlyttet = distanceFlyttet + 0.5;
+    if ((sin(vinkel)*distanceFlyttet+positionY)>height) distanceFlyttet*=-1;
+    if ((cos(vinkel)*distanceFlyttet+positionX)>width) distanceFlyttet*=-1;
+
+    
   }
 
   void tegnFlue(){ //flue tegnes
@@ -57,4 +63,5 @@ class Flue{ //hvor fluen bliver placeret hvis man trykker på en knap
         ellipse(0+6,0,8,8);
     popMatrix();
   } 
+  
 }
